@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="node_modules/c3/c3.min.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="node_modules/nvd3/build/nv.d3.min.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="css/main.css" media="screen" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<table id="chartTable">
+    <tr>
+        <td><h1>NVD3</h1></td>
+        <td><h1>C3</h1></td>
+    <tr>
+        <td>
+            <div id="nvd3-lineChart">
+                <svg></svg>
+            </div>
+        </td>
+        <td>
+            <div id="c3-lineChart">
+                <svg></svg>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div id="nvd3-stackedChart">
+                <svg></svg>
+            </div>
+        </td>
+        <td>
+            <div id="c3-stackedChart">
+                <svg></svg>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div id="nvd3-donutChart">
+                <svg></svg>
+            </div>
+        </td>
+        <td>
+            <div id="c3-donutChart">
+                <svg></svg>
+            </div>
+        </td>
+    </tr>
+</table>
+
+<script src="node_modules/d3/d3.min.js" type="text/javascript"></script>
+<script src="node_modules/c3/c3.min.js" type="text/javascript"></script>
+<script src="node_modules/nvd3/build/nv.d3.min.js" type="text/javascript"></script>
+
+<script src="js/shared.js" type="text/javascript"></script>
+<script src="js/c3-logic.js" type="text/javascript"></script>
+<script src="js/nvd3-logic.js" type="text/javascript"></script>
+
+</body>
+</html>
