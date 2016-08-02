@@ -80,8 +80,7 @@
         console.debug(newLineData)
         lineChart.flow({
             length: 1,
-            columns: newLineData,
-            duration: 1000
+            columns: newLineData
         });
 
 
@@ -97,8 +96,7 @@
         console.debug(newStackedData)
         stackedChart.flow({
             length: 1,
-            columns: newStackedData,
-            duration: 1000
+            columns: newStackedData
         });
 
 
