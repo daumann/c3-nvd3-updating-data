@@ -159,7 +159,7 @@ var dcinterval;
 function changeDCUpdate (time){
     if (typeof dcinterval !== "undefined")
         clearInterval(dcinterval);
-    dcinterval = setInterval(DCupdate, time);
+    if (time !== 0)    dcinterval = setInterval(DCupdate, time);
 }
 
 function DCupdate () {

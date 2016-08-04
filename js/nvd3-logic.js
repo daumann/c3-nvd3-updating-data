@@ -92,7 +92,7 @@
     function changeNvd3Update (time){
         if (typeof nvd3interval !== "undefined")
             clearInterval(nvd3interval);
-        nvd3interval = setInterval(NVD3update, time);
+        if (time !== 0)    nvd3interval = setInterval(NVD3update, time);
     }
     
     function NVD3update() {

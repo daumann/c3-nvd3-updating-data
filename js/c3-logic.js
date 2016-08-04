@@ -69,7 +69,7 @@
     function changeC3Update (time){
         if (typeof c3interval !== "undefined")
             clearInterval(c3interval);
-        c3interval = setInterval(C3update, time);
+        if (time !== 0)    c3interval = setInterval(C3update, time);
     }
 
     function C3update() {
