@@ -3,8 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "dependencies": {
+    "bootstrap": "^3.3.7",
     "c3": "^0.4.11",
     "d3": "^3.5.12",
+    "dc": "^2.0.0-beta.32",
     "nvd3": "^1.8.4",
     "thrift": "^0.9.1"
   }

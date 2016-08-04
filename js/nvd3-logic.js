@@ -87,7 +87,15 @@
     /** Update Chart Data **/
     let xIterator = 99;
     let tIterator = 1335758400000;
-    window.setInterval(() => {
+
+    var nvd3interval;
+    function changeNvd3Update (time){
+        if (typeof nvd3interval !== "undefined")
+            clearInterval(nvd3interval);
+        nvd3interval = setInterval(NVD3update, time);
+    }
+    
+    function NVD3update() {
 
         /** update line data **/
 
@@ -99,7 +107,7 @@
                 dataLine[setId].values.push({series: setId, x: xIterator, y: Math.sin(xIterator/10)});
             }
             else if (setId == 1){
-                dataLine[setId].values.push({series: setId, x: xIterator, y:  .5 * Math.cos(xIterator/10)});
+                dataLine[setId].values.push({series: setId, x: xIterator, y: Math.cos(xIterator/10)});
             }
 
         }
@@ -135,5 +143,5 @@
         dataDonut[(new Date().getSeconds()%8)].value = Math.random()*100;
         donutChart.update();
 
-    }, 1000);
+    };
 }

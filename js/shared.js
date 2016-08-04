@@ -8,7 +8,7 @@ let dataLineGenNVD3 = () => {
 
     for (var i = 0; i < 100; i++) {
         sin.push({x: i, y: Math.sin(i/10)});
-        cos.push({x: i, y: .5 * Math.cos(i/10)});
+        cos.push({x: i, y: Math.cos(i/10)});
     }
 
     return [
@@ -88,7 +88,7 @@ let dataLineGenC3 = () => {
     for (var i = 0; i < 100; i++) {
         x.push(i);
         sin.push(Math.sin(i/10));
-        cos.push(.5 * Math.cos(i/10));
+        cos.push(Math.cos(i/10));
     }
 
     return [

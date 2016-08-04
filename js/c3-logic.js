@@ -60,54 +60,62 @@
         bindto: '#c3-donutChart'
     });
 
+
     /** Update Chart Data **/
     let xIterator = 99;
     let tIterator = 1335758400000;
-    window.setInterval(() => {
 
-        /** update line data **/
+    var c3interval;
+    function changeC3Update (time){
+        if (typeof c3interval !== "undefined")
+            clearInterval(c3interval);
+        c3interval = setInterval(C3update, time);
+    }
 
-        xIterator++;
-        let newLineData = [ ['x', xIterator] ];
-        for (let setId in dataLineC3) {
-            if (setId == 1){
-                newLineData.push([ dataLineC3[setId][0], Math.sin(xIterator/10)]);
+    function C3update() {
+
+            /** update line data **/
+
+            xIterator++;
+            let newLineData = [ ['x', xIterator] ];
+            for (let setId in dataLineC3) {
+                if (setId == 1){
+                    newLineData.push([ dataLineC3[setId][0], Math.sin(xIterator/10)]);
+                }
+                else if (setId == 2){
+                    newLineData.push([ dataLineC3[setId][0], Math.cos(xIterator/10)]);
+                }
             }
-            else if (setId == 2){
-                newLineData.push([ dataLineC3[setId][0], .5 * Math.cos(xIterator/10)]);
+
+            lineChart.flow({
+                length: 1,
+                columns: newLineData
+            });
+
+
+            /** update stacked data **/
+            tIterator += 2592000000;
+            let newStackedData = [ ['x', tIterator] ];
+            for (let setId in dataStackedC3) {
+                if (setId != 0){
+                    newStackedData.push([ dataStackedC3[setId][0], 40*Math.random()]);
+                }
             }
-        }
-        console.debug(newLineData)
-        lineChart.flow({
-            length: 1,
-            columns: newLineData
-        });
+            stackedChart.flow({
+                length: 1,
+                columns: newStackedData
+            });
 
 
-        /** update stacked data **/
-        tIterator += 2592000000;
-        let newStackedData = [ ['x', tIterator] ];
-        for (let setId in dataStackedC3) {
-            if (setId != 0){
-                console.debug(setId,  dataStackedC3[setId][0])
-                newStackedData.push([ dataStackedC3[setId][0], 40*Math.random()]);
-            }
-        }
-        console.debug(newStackedData)
-        stackedChart.flow({
-            length: 1,
-            columns: newStackedData
-        });
+            /** update donut data **/
+            dataDonut[(new Date().getSeconds()%8)].value = Math.random()*100;
+            donutChart.load({
+                columns: [
+                    [dataDonutC3[(new Date().getSeconds()%8)][0], 100*Math.random()],
+                ]
+            });
 
 
-        /** update donut data **/
-        dataDonut[(new Date().getSeconds()%8)].value = Math.random()*100;
-        donutChart.load({
-            columns: [
-                [dataDonutC3[(new Date().getSeconds()%8)][0], 100*Math.random()],
-            ]
-        });
-
-
-    }, 1000);
+        };
+    
 }
